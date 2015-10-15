@@ -34,11 +34,11 @@ module.exports = {
 
   images: {
     build: { // Copies images from `src` to `build`; does not optimize
-      src: src+'**/*(*.png|*.jpg|*.jpeg|*.gif)'
+      src: src+'**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)'
     , dest: build
     }
   , dist: {
-      src: [dist+'**/*(*.png|*.jpg|*.jpeg|*.gif)', '!'+dist+'screenshot.png']
+      src: [dist+'**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)', '!'+dist+'screenshot.png']
     , imagemin: {
         optimizationLevel: 7
       , progressive: true
@@ -133,7 +133,7 @@ module.exports = {
     src: {
       styles:       src+'scss/**/*.scss'
     , scripts:      src+'js/**/*.js' // You might also want to watch certain dependency trees but that's up to you
-    , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif)'
+    , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)'
     , theme:        src+'**/*.php'
     , livereload:   build+'**/*'
     }
