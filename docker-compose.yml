@@ -1,0 +1,20 @@
+version: "2"
+services:
+  wordpress:
+    image: wordpress:4.5.0-apache
+    links:
+      - mysql
+    environment:
+      - WORDPRESS_DB_HOST=mysql
+      - WORDPRESS_DB_PASSWORD=wordpress
+    volumes:
+      - ./build:/var/www/html/wp-content/themes/voidx
+      # Disable opcache
+      - /dev/null:/usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+    ports:
+      - 8080:80
+
+  mysql:
+    image: mariadb:10.1.13
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
