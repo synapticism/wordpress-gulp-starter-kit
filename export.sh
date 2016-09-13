@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-mysql -u root -p$MYSQL_ROOT_PASSWORD > /tmp/db.sql
+mysqldump -u root -p$MYSQL_ROOT_PASSWORD wordpress > /tmp/db.sql
