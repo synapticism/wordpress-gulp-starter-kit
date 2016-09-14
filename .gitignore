@@ -34,6 +34,10 @@ bower_components
 node_modules
 vendor
 build
+build/*
+!**/build/
 dist
+dist/*
+!**/dist/
 assets/icons
 _normalize.scss

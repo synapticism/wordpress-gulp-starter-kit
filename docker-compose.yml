@@ -1,0 +1,46 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+        - ./.data/db:/var/lib/mysql
+        - ./import.sh:/tmp/import.sh
+        - ./export.sh:/tmp/export.sh
+        - ./db.sql:/tmp/db.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    build: .
+    links:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./build/:/var/www/html/wp-content/themes/voidx/
+      - ./plugins/:/var/www/html/wp-content/plugins
+      - ./uploads/:/var/www/html/wp-content/uploads
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+    - db:db
+    environment:
+     - PMA_ARBITRARY=1
+     - PMA_USER=wordpress
+     - PMA_PASSWORD=wordpress
+    restart: always
+    ports:
+     - 8080:80
+    volumes:
+     - /sessions
