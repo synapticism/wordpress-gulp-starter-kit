@@ -22,7 +22,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./build/:/var/www/html/wp-content/themes/
+      - ./dist/:/var/www/html/wp-content/themes/
       - ./plugins/:/var/www/html/wp-content/plugins
       - ./uploads/:/var/www/html/wp-content/uploads
     restart: always
