@@ -9,6 +9,7 @@ var project     = 'voidx'                 // The directory name for your theme; 
   , bower       = './bower_components/'   // Bower packages
   , composer    = './vendor/'             // Composer packages
   , modules     = './node_modules/'       // npm packages
+  , scssfolder  = 'scss'
 ;
 
 // Project settings
@@ -86,7 +87,7 @@ module.exports = {
 
   styles: {
     build: {
-      src: src+'scss/**/*.scss'
+      src: src+scssfolder+'/**/*.scss'
     , dest: build
     }
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'rubysass'
@@ -97,12 +98,12 @@ module.exports = {
       }
     }
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
-      loadPath: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
+      loadPath: ['./src/'+scssfolder, bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , sourcemap: true
   }
   , libsass: { // Requires the libsass implementation of Sass (included in this package)
-      includePaths: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
+      includePaths: ['./src/'+scssfolder, bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , onError: function(err) {
         return console.log(err);
@@ -130,14 +131,14 @@ module.exports = {
     }
   , normalize: { // Copies `normalize.css` from `node_modules` to `src/scss` and renames it to allow for it to imported as a Sass file
       src: modules+'normalize.css/normalize.css'
-    , dest: src+'scss'
+    , dest: src+scssfolder
     , rename: '_normalize.scss'
     }
   },
 
   watch: { // What to watch before triggering each specified task; if files matching the patterns below change it will trigger BrowserSync or Livereload
     src: {
-      styles:       src+'scss/**/*.scss'
+      styles:       src+scssfolder'/**/*.scss'
     , scripts:      src+'js/**/*.js' // You might also want to watch certain dependency trees but that's up to you
     , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)'
     , theme:        src+'**/*.php'
