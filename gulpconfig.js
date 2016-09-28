@@ -109,6 +109,10 @@ module.exports = {
         return console.log(err);
       }
     }
+  , fonts: {
+      src: src+'**/*(*.eot|*.woff|*.woff2|*.ttf)' // This simply copies font files over; both this and the previous task could be combined if you like
+    , dest: build
+    }
   },
 
   theme: {
