@@ -14,9 +14,7 @@ services:
       MYSQL_PASSWORD: wordpress
 
   wordpress:
-    depends_on:
-      - db
-    build: .
+    image: 6e6a/docker-wordpress:latest
     links:
       - db
     ports:
