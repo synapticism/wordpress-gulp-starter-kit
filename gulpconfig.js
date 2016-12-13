@@ -150,5 +150,12 @@ module.exports = {
       livereload:   build+'**/*'
     },
     watcher: 'livereload' // Modify this value to easily switch between BrowserSync ('browsersync') and Livereload ('livereload')
-  }
+  },
+
+  rsync : {
+    dist: dist,
+    hostname: '123.456.289.1', 
+    username: 'root',
+    destination: '/var/www/domain.com/public/wp-content/themes/'+project
+  },
 }
