@@ -2,7 +2,7 @@
 
 var gulp        = require('gulp'),
     plugins     = require('gulp-load-plugins')({ camelize: true }),
-    config      = require('../../gulpconfig').theme;
+    config      = require('../gulpconfig').theme;
 
 // Copy PHP source files to the `build` folder
 gulp.task('theme-php', function() {
