@@ -141,6 +141,15 @@ module.exports = {
     },
   },
 
+  ftp: {
+    dest: '/public_html/domain.com/wp-content/themes/'+project,
+    dist: dist,
+    parallel: 3,
+    host: 'domain.com',
+    user: 'user@domain.com',
+    password: 'password'
+  },
+
   watch: { // What to watch before triggering each specified task; if files matching the patterns below change it will trigger BrowserSync or Livereload
     src: {
       styles:       src+'scss/**/*.scss',

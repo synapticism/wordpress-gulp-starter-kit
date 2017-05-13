@@ -49,6 +49,7 @@
     "spin.js": "^2.3.2",
     "svg4everybody": "^2.1.0",
     "timeago": "^1.5.3",
+    "vinyl-ftp": "^0.6.0",
     "wp-ajax-page-loader": "^0.3.0"
   },
   "scripts": {
